@@ -8,7 +8,8 @@ Widget appName() {
     children: <Widget>[
       Text("Nature",
           style: GoogleFonts.roboto(
-              color: const Color.fromARGB(255, 1, 107, 42),
+              // color: const Color.fromARGB(255, 1, 107, 42),
+              color: const Color(0xFF2E7D32),
               fontSize: 24,
               fontWeight: FontWeight.w700)),
       Text("Pix",

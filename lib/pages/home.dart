@@ -8,7 +8,6 @@ import 'package:drop_shadow_image/drop_shadow_image.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_styled_toast/flutter_styled_toast.dart';
-import 'package:zoom_widget/zoom_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -118,7 +117,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: appName(),
         //backgroundColor: Theme.of(context).primaryColor.withOpacity(0.8),
-        backgroundColor: const Color(0xFFBCC6CC),
+        backgroundColor: const Color(0xFF37474F),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -166,8 +165,21 @@ class _HomePageState extends State<HomePage> {
                               image: Image.network(
                                 imgUrls[index]['largeImageURL'],
                                 fit: BoxFit.cover,
-                                height:
-                                    (MediaQuery.of(context).size.height * 0.5),
+                              ),
+                            ),
+                            //overlay interactive image
+                            Positioned.fill(
+                              child: InteractiveViewer(
+                                panEnabled: true,
+                                minScale: 1.0,
+                                maxScale: 5.0,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  child: Image.network(
+                                    imgUrls[index]['largeImageURL'],
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
                               ),
                             ),
                             Positioned(
@@ -256,7 +268,8 @@ class _HomePageState extends State<HomePage> {
         duration: const Duration(milliseconds: 250),
         height: _isVisible ? 60.0 : 0.0,
         child: BottomAppBar(
-          color: Theme.of(context).primaryColor.withAlpha((0.8 * 255).toInt()),
+          // color: Theme.of(context).primaryColor.withAlpha((0.8 * 255).toInt()),
+          color: const Color(0xFF37474F),
           elevation: 2.5,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -302,9 +315,9 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 icon: const Icon(
-                  FontAwesomeIcons.wrench,
-                ),
-                iconSize: 18.0,
+                    // FontAwesomeIcons.gear,
+                    Icons.settings_outlined),
+                iconSize: 24.0,
               ),
               IconButton(
                 tooltip: 'Previous Page',
@@ -318,8 +331,8 @@ class _HomePageState extends State<HomePage> {
                         'pageNumber': pageNumber,
                       });
                 },
-                icon: const Icon(FontAwesomeIcons.rotateLeft),
-                iconSize: 18.0,
+                icon: const Icon(Icons.rotate_left_rounded),
+                iconSize: 30.0,
               ),
               IconButton(
                 tooltip: 'Refresh',
@@ -331,8 +344,8 @@ class _HomePageState extends State<HomePage> {
                     '/refresh',
                   );
                 },
-                icon: const Icon(FontAwesomeIcons.rotate),
-                iconSize: 18.0,
+                icon: const Icon(Icons.autorenew_outlined),
+                iconSize: 30.0,
               ),
               IconButton(
                 tooltip: 'Next Page',
@@ -346,8 +359,8 @@ class _HomePageState extends State<HomePage> {
                         'pageNumber': pageNumber,
                       });
                 },
-                icon: const Icon(FontAwesomeIcons.rotateRight),
-                iconSize: 18.0,
+                icon: const Icon(Icons.rotate_right_rounded),
+                iconSize: 30.0,
               ),
               IconButton(
                 tooltip: 'About App',
@@ -359,8 +372,8 @@ class _HomePageState extends State<HomePage> {
                     '/about-app',
                   );
                 },
-                icon: const Icon(FontAwesomeIcons.ellipsisVertical),
-                iconSize: 18.0,
+                icon: const Icon(Icons.more_vert_outlined),
+                iconSize: 30.0,
               ),
             ],
           ),
