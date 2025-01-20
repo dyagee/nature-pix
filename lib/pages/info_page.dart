@@ -35,8 +35,7 @@ class _AboutAppState extends State<AboutApp> {
             'About App',
             style: TextStyle(color: Colors.white),
           ),
-          backgroundColor:
-              Theme.of(context).primaryColor.withAlpha((0.8 * 255).toInt()),
+          backgroundColor: const Color(0xFF37474F),
           centerTitle: true,
         ),
         body: SafeArea(

@@ -15,10 +15,10 @@ class Refresh extends StatefulWidget {
 class _RefreshState extends State<Refresh> {
   //variables for loading page text animation
   List<Color> colorizeColors = [
-    const Color(0xFFFF00FF),
+    const Color.fromARGB(255, 4, 125, 83),
     const Color(0xFF00AEEF),
-    const Color(0xFFFF0000),
-    const Color(0xFF4B0082),
+    const Color.fromARGB(255, 78, 21, 200),
+    const Color.fromARGB(255, 50, 152, 120),
   ];
 
   TextStyle colorizeTextStyle = TextStyle(
@@ -64,14 +64,14 @@ class _RefreshState extends State<Refresh> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: const Color.fromARGB(117, 76, 0, 130),
+        backgroundColor: const Color.fromARGB(117, 26, 55, 65),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               LoadingAnimationWidget.flickr(
-                leftDotColor: const Color(0xFFFF00FF),
+                leftDotColor: const Color.fromARGB(255, 6, 99, 33),
                 rightDotColor: const Color(0xFF00AEEF),
                 size: 58,
               ),
@@ -98,7 +98,7 @@ class _RefreshState extends State<Refresh> {
                       colors: colorizeColors,
                     ),
                     ColorizeAnimatedText(
-                      'Stay Jiggy....',
+                      'Explore....',
                       textStyle: colorizeTextStyle,
                       colors: colorizeColors,
                     ),
