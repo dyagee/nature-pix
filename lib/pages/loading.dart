@@ -26,7 +26,7 @@ class _LoadingState extends State<Loading> {
     const Color.fromARGB(255, 238, 243, 240),
     const Color.fromARGB(255, 103, 126, 112),
     const Color.fromARGB(255, 21, 181, 202),
-    const Color.fromARGB(255, 236, 201, 3),
+    const Color.fromARGB(255, 177, 124, 10),
   ];
 
   TextStyle colorizeTextStyle = TextStyle(
@@ -52,7 +52,7 @@ class _LoadingState extends State<Loading> {
     images.shuffle();
 
     //delay some seconds before home page
-    Future.delayed(const Duration(milliseconds: 19000), () {
+    Future.delayed(const Duration(milliseconds: 10000), () {
       if (mounted) {
         Navigator.pushReplacementNamed(context, '/home', arguments: {
           'imgs': images,
@@ -79,9 +79,9 @@ class _LoadingState extends State<Loading> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               LoadingAnimationWidget.bouncingBall(
-                  color: Colors.white, size: 60.0),
+                  color: Colors.white, size: 100.0),
               const SizedBox(
-                height: 80.0,
+                height: 2.0,
               ),
               SizedBox(
                 width: 400,

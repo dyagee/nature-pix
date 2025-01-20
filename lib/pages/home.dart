@@ -159,8 +159,8 @@ class _HomePageState extends State<HomePage> {
                           children: <Widget>[
                             DropShadowImage(
                               offset: const Offset(8.0, 8.0),
-                              scale: 4.0,
-                              blurRadius: 20.0,
+                              scale: 3.0,
+                              blurRadius: 16.0,
                               borderRadius: 8.0,
                               image: Image.network(
                                 imgUrls[index]['largeImageURL'],
@@ -191,7 +191,7 @@ class _HomePageState extends State<HomePage> {
                                       mini: true,
                                       tooltip: 'Download',
                                       backgroundColor:
-                                          const Color.fromARGB(178, 1, 107, 42),
+                                          const Color.fromARGB(192, 30, 44, 37),
                                       splashColor: Colors.cyan[50],
                                       onPressed: () async {
                                         _downloadImage(
@@ -280,10 +280,13 @@ class _HomePageState extends State<HomePage> {
                 splashColor: const Color(0xFF00AEEF),
                 onPressed: () => showDialog<String>(
                   context: context,
-                  barrierColor: const Color.fromARGB(163, 103, 180, 96),
+                  barrierColor: const Color.fromARGB(162, 57, 105, 103),
                   builder: (BuildContext context) => AlertDialog(
                     //title: const Text('AlertDialog Title'),
-                    icon: const Icon(FontAwesomeIcons.gear),
+                    icon: const Icon(
+                      FontAwesomeIcons.gears,
+                      size: 30.0,
+                    ),
                     actionsAlignment: MainAxisAlignment.spaceEvenly,
                     content: const Text(
                       'Enable Images Download?',
@@ -316,8 +319,8 @@ class _HomePageState extends State<HomePage> {
                 ),
                 icon: const Icon(
                     // FontAwesomeIcons.gear,
-                    Icons.settings_outlined),
-                iconSize: 24.0,
+                    Icons.settings_rounded),
+                iconSize: 30.0,
               ),
               IconButton(
                 tooltip: 'Previous Page',
