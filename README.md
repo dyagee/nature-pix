@@ -1,17 +1,17 @@
 # naturepix
 
-A new Flutter project.
+This project aims at serving you with amazing loyalty free images of nature that can be downloaded for your consumption.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## v1.1.0
 
-A few resources to get you started if this is your first Flutter project:
+This version contains the following changes:
+- Changed splash and reload screens animations
+- Edited query parameters
+- Added image zoom functionality
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# nature-pix
+## todo:
+- Change error page/image
+- Add image categories
+- Auto dock navigation bar
+- Add more image sources
