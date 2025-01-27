@@ -1,0 +1,370 @@
+{
+    "facts":[
+        {"fact": "Bamboo is the fastest-growing plant, capable of growing up to 35 inches in a single day.", "source": "USDA"},
+        {"fact": "Seagrass beds can store more carbon per hectare than tropical rainforests.", "source": "NOAA"},
+        {"fact": "The Amazon Rainforest produces 20% of the world's oxygen.", "source": "WWF"},
+        {"fact": "The corpse flower emits a smell resembling rotting flesh to attract pollinators.", "source": "U.S. Botanic Garden"},
+        {"fact": "Some orchids can mimic the shape and smell of female insects to attract male pollinators.", "source": "Kew Gardens"},
+        {"fact": "The baobab tree can store thousands of gallons of water in its trunk.", "source": "National Park Service"},
+        {"fact": "Mangroves protect coastlines by reducing erosion and acting as natural storm barriers.", "source": "NOAA"},
+        {"fact": "Venus flytraps can count the number of times an insect touches their hairs before closing.", "source": "Smithsonian"},
+        {"fact": "Pineapples take about two years to grow and mature.", "source": "USDA"},
+        {"fact": "The Giant Sequoia is one of the largest trees, with some specimens weighing over 2 million pounds.", "source": "National Park Service"},
+        {"fact": "The Welwitschia plant can live over 1,000 years in desert environments.", "source": "Kew Gardens"},
+        {"fact": "Sunflowers can remove toxins like lead, arsenic, and uranium from contaminated soil.", "source": "EPA"},
+        {"fact": "The sap of the rubber tree is used to produce natural rubber.", "source": "USDA"},
+        {"fact": "Coconut palms are considered one of the most versatile plants, providing food, water, and building materials.", "source": "FAO"},
+        {"fact": "Tomatoes were once thought to be poisonous in Europe.", "source": "USDA"},
+        {"fact": "Coffee beans are actually seeds found inside coffee cherries.", "source": "International Coffee Organization"},
+        {"fact": "Some plants, like the resurrection fern, can survive extreme dehydration and recover when water is available.", "source": "U.S. Forest Service"},
+        {"fact": "The world's smallest flowering plant is the Wolffia globosa, also known as watermeal.", "source": "Kew Gardens"},
+        {"fact": "Aloe vera has been used for medicinal purposes for thousands of years.", "source": "National Center for Complementary and Integrative Health"},
+        {"fact": "Bamboo can release 30% more oxygen than hardwood trees.", "source": "WWF"},
+        {"fact": "Octopuses have three hearts, and two of them stop beating when they swim.", "source": "NOAA"},
+        {"fact": "A group of flamingos is called a \"flamboyance.\"", "source": "Audubon Society"},
+        {"fact": "Sloths can hold their breath for up to 40 minutes by slowing their heart rate.", "source": "Smithsonian"},
+        {"fact": "The blue whale is the largest animal ever known to exist on Earth.", "source": "NOAA"},
+        {"fact": "Honeybees communicate with each other through a \"waggle dance.\"", "source": "USDA"},
+        {"fact": "Some species of frogs can freeze their bodies in winter and thaw in spring.", "source": "U.S. Geological Survey"},
+        {"fact": "Male seahorses are the ones that carry and birth their young.", "source": "National Geographic"},
+        {"fact": "Crows are among the most intelligent birds and can recognize human faces.", "source": "Audubon Society"},
+        {"fact": "The axolotl, a type of salamander, can regenerate its limbs, spinal cord, heart, and other organs.", "source": "Smithsonian"},
+        {"fact": "Butterflies can taste with their feet.", "source": "USDA"},
+        {"fact": "Elephants use their trunks for over 40,000 different muscle movements.", "source": "WWF"},
+        {"fact": "Polar bears have black skin under their white fur to absorb sunlight better.", "source": "WWF"},
+        {"fact": "Starfish can regrow lost arms, and sometimes an entire body can regrow from a single arm.", "source": "NOAA"},
+        {"fact": "A cheetah's speed can reach up to 70 mph, making it the fastest land animal.", "source": "National Geographic"},
+        {"fact": "Platypuses are one of the few mammals that lay eggs.", "source": "Australian Museum"},
+        {"fact": "The blood of horseshoe crabs is used in medical testing to detect bacterial contamination.", "source": "U.S. FDA"},
+        {"fact": "Some ants farm aphids and milk them for a sugary substance called honeydew.", "source": "USDA"},
+        {"fact": "The claws of a mantis shrimp can move so fast that they create cavitation bubbles.", "source": "NOAA"},
+        {"fact": "Penguins can drink seawater because of a special gland that filters out the salt.", "source": "National Geographic"},
+        {"fact": "The heart of a shrimp is located in its head.", "source": "NOAA"},
+        {"fact": "Bioluminescence in deep-sea creatures remains a mystery, with new species discovered annually.", "source": "NOAA"},
+        {"fact": "The migration patterns of monarch butterflies span generations, but the exact mechanism is still unclear.", "source": "U.S. Forest Service"},
+        {"fact": "Trees in forests can communicate and share nutrients through fungal networks, sometimes called the \"Wood Wide Web.\"", "source": "Smithsonian"},
+        {"fact": "How birds navigate during migration using Earth's magnetic field is not fully understood.", "source": "Audubon Society"},
+        {"fact": "Some plants, like the Mimosa pudica, move in response to touch, but the exact process is still being studied.", "source": "Kew Gardens"},
+        {"fact": "The intelligence of dolphins rivals that of great apes, but the full extent of their social structures is unknown.", "source": "NOAA"},
+        {"fact": "The mysterious disappearance of bees, known as colony collapse disorder, poses threats to ecosystems.", "source": "USDA"},
+        {"fact": "The extreme lifespans of Greenland sharks (up to 400 years) remain largely unexplained.", "source": "NOAA"},
+        {"fact": "The co-evolution of figs and their specific species of wasps is a fascinating symbiotic relationship.", "source": "National Geographic"},
+        {"fact": "The communication methods of whales through complex songs are still being decoded.", "source": "NOAA"},
+        {"fact": "The Pacific Ocean is the largest ocean, covering more than 63 million square miles.", "source": "NOAA"},
+        {"fact": "The Atlantic Ocean is growing wider by about 1 inch per year due to tectonic activity.", "source": "USGS"},
+        {"fact": "Coral reefs support about 25% of all marine life, despite covering less than 1% of the ocean floor.", "source": "NOAA"},
+        {"fact": "The Mariana Trench is the deepest part of the ocean, reaching over 36,000 feet below sea level.", "source": "NOAA"},
+        {"fact": "The Dead Sea is so salty that people can easily float on its surface.", "source": "Geological Survey of Israel"},
+        {"fact": "The Amazon River discharges more freshwater into the ocean than the next seven largest rivers combined.", "source": "WWF"},
+        {"fact": "The Mediterranean Sea is one of the most biologically diverse regions, hosting over 17,000 species.", "source": "UNEP"},
+        {"fact": "Antarctica's Ross Ice Shelf is the largest ice shelf in the world.", "source": "USGS"},
+        {"fact": "About 70% of Earth's oxygen is produced by marine plants, including phytoplankton.", "source": "NOAA"},
+        {"fact": "The Arctic Ocean is the smallest and shallowest ocean on Earth.", "source": "National Snow and Ice Data Center"},
+        {"fact": "The Sargasso Sea is unique for its boundaries, defined by ocean currents rather than landmasses.", "source": "NOAA"},
+        {"fact": "Hydrothermal vents on the ocean floor can support entire ecosystems without sunlight.", "source": "NOAA"},
+        {"fact": "The Baltic Sea has a low salinity level, making it almost like a brackish water body.", "source": "HELCOM"},
+        {"fact": "The Great Barrier Reef is the largest coral reef system and can be seen from space.", "source": "UNESCO"},
+        {"fact": "The Caspian Sea is the largest enclosed inland water body, often considered both a sea and a lake.", "source": "UNEP"},
+        {"fact": "Lake Baikal in Siberia is the deepest freshwater lake, reaching 5,387 feet.", "source": "WWF"},
+        {"fact": "The Red Sea is one of the warmest seas, with surface temperatures exceeding 30°C (86°F) in summer.", "source": "UNEP"},
+        {"fact": "The Gulf Stream is a powerful current in the Atlantic Ocean, influencing the climate of North America and Europe.", "source": "NOAA"},
+        {"fact": "Jellyfish blooms are increasing in some regions due to ocean warming and overfishing.", "source": "Smithsonian"},
+        {"fact": "The Southern Ocean encircles Antarctica and helps regulate Earth's climate by distributing heat.", "source": "NOAA"},
+        {"fact": "There are over 117 million lakes worldwide, covering nearly 4% of Earth's land area.", "source": "World Lakes Database"},
+        {"fact": "The Nile River is considered the longest river, stretching over 4,100 miles.", "source": "WWF"},
+        {"fact": "The Mississippi River carries about 500 million tons of sediment to the Gulf of Mexico annually.", "source": "USGS"},
+        {"fact": "Lake Superior is the largest freshwater lake by surface area.", "source": "Great Lakes Commission"},
+        {"fact": "The Amazon River basin contains the largest rainforest and provides 20% of Earth's freshwater runoff.", "source": "WWF"},
+        {"fact": "The Yangtze River in China is the longest river in Asia.", "source": "UNEP"},
+        {"fact": "Crater Lake in Oregon is the deepest lake in the United States.", "source": "National Park Service"},
+        {"fact": "Lake Titicaca, shared by Peru and Bolivia, is the highest navigable lake in the world.", "source": "UNESCO"},
+        {"fact": "The Mekong River supports one of the largest freshwater fisheries in the world.", "source": "WWF"},
+        {"fact": "Saltwater lakes like the Great Salt Lake in Utah have no outlet to the sea, causing salt to accumulate.", "source": "USGS"},
+        {"fact": "The Ganges River is sacred in Hinduism and supports millions of people along its banks.", "source": "UNEP"},
+        {"fact": "The Okavango Delta in Botswana is one of the largest inland deltas, known for its wildlife diversity.", "source": "UNESCO"},
+        {"fact": "Loch Ness in Scotland is famous for its legendary monster, Nessie.", "source": "VisitScotland"},
+        {"fact": "Lake Victoria is the largest lake in Africa and the second-largest freshwater lake by surface area.", "source": "UNEP"},
+        {"fact": "The Volga River is Europe's longest river, flowing through Russia.", "source": "WWF"},
+        {"fact": "The Great Bear Lake in Canada is one of the cleanest lakes in the world.", "source": "Canadian Government"},
+        {"fact": "The Rhine River runs through six countries in Europe, making it an important waterway.", "source": "UNEP"},
+        {"fact": "The Colorado River carved the Grand Canyon over millions of years.", "source": "National Park Service"},
+        {"fact": "Lake Tanganyika is the longest freshwater lake and one of the oldest.", "source": "UNEP"},
+        {"fact": "The Yangtze River Dolphin is considered functionally extinct due to human activity.", "source": "WWF"},
+        {"fact": "The Bermuda Triangle is known for unexplained ship and aircraft disappearances.", "source": "NOAA"},
+        {"fact": "Bioluminescent bays like Mosquito Bay in Puerto Rico glow due to microorganisms called dinoflagellates.", "source": "NOAA"},
+        {"fact": "The origin of the underwater Bimini Road near the Bahamas remains a mystery.", "source": "USGS"},
+        {"fact": "Underwater lakes and rivers, formed by brine pools, are found on the seafloor.", "source": "NOAA"},
+        {"fact": "Scientists are still discovering new species in the deep ocean at an incredible rate.", "source": "NOAA"},
+        {"fact": "The Baltic Sea Anomaly is an unexplained structure found underwater.", "source": "HELCOM"},
+        {"fact": "Rogue waves, once thought to be myths, are now known to be real but unpredictable.", "source": "NOAA"},
+        {"fact": "The “singing” sands of some deserts and beaches remain partially unexplained.", "source": "USGS"},
+        {"fact": "The disappearance of ancient underwater cities, like Heracleion, is a fascinating mystery.", "source": "UNESCO"},
+        {"fact": "The exact origins of the Great Blue Hole in Belize remain unclear.", "source": "UNEP"},
+        {"fact": "There are underwater volcanoes that create new islands, such as those in Tonga.", "source": "NOAA"},
+        {"fact": "Deep-sea trenches are largely unexplored, with life forms adapted to extreme pressures.", "source": "NOAA"},
+        {"fact": "Whirlpools like the Maelstrom off the coast of Norway have long inspired myths and legends.", "source": "Norwegian Government"},
+        {"fact": "Ancient fossils found in water bodies suggest that life on Earth began in the oceans.", "source": "Smithsonian"},
+        {"fact": "The Loch Ness Monster, though scientifically unproven, attracts global interest.", "source": "VisitScotland"},
+        {"fact": "Fish have existed for more than 500 million years, predating dinosaurs.", "source": "Smithsonian"},
+        {"fact": "There are over 34,000 known species of fish, making them the most diverse group of vertebrates.", "source": "FishBase"},
+        {"fact": "Fish use gills to extract oxygen from water.", "source": "NOAA"},
+        {"fact": "Sharks, a type of fish, have skeletons made entirely of cartilage instead of bone.", "source": "NOAA"},
+        {"fact": "The coelacanth, once thought extinct, was rediscovered in 1938 off the coast of South Africa.", "source": "Smithsonian"},
+        {"fact": "Clownfish can change sex, typically from male to female, during their lifespan.", "source": "NOAA"},
+        {"fact": "Some fish, like the lungfish, can survive out of water by breathing air.", "source": "Australian Museum"},
+        {"fact": "The fastest fish is the black marlin, capable of swimming at speeds of up to 82 mph.", "source": "NOAA"},
+        {"fact": "The arapaima, one of the largest freshwater fish, can grow up to 10 feet long.", "source": "WWF"},
+        {"fact": "Seahorses are the only species where males carry and give birth to their young.", "source": "Smithsonian"},
+        {"fact": "Fish can detect electrical fields using specialized organs, such as the ampullae of Lorenzini in sharks.", "source": "NOAA"},
+        {"fact": "Lanternfish have bioluminescent organs to attract prey and communicate in the dark ocean depths.", "source": "NOAA"},
+        {"fact": "The pufferfish inflates itself as a defense mechanism against predators.", "source": "Smithsonian"},
+        {"fact": "Some species of catfish can \"walk\" on land by using their fins to move.", "source": "National Geographic"},
+        {"fact": "Parrotfish produce a mucus cocoon at night to protect themselves from predators.", "source": "NOAA"},
+        {"fact": "Fish scales are made of a material similar to human fingernails.", "source": "Smithsonian"},
+        {"fact": "The electric eel can produce electric shocks up to 600 volts to stun prey or deter predators.", "source": "National Geographic"},
+        {"fact": "The mudskipper is an amphibious fish that can climb trees and survive on land.", "source": "NOAA"},
+        {"fact": "Certain fish, like salmon, are anadromous, meaning they migrate from saltwater to freshwater to spawn.", "source": "USGS"},
+        {"fact": "The cleaner wrasse eats parasites off larger fish, forming a mutualistic relationship.", "source": "NOAA"},
+        {"fact": "Coral reefs, sometimes called the \"rainforests of the sea,\" host over 4,000 species of fish.", "source": "NOAA"},
+        {"fact": "Deep-sea fish like the anglerfish use bioluminescent lures to attract prey.", "source": "NOAA"},
+        {"fact": "Some fish can survive in extreme environments, such as hot springs or Arctic ice.", "source": "NOAA"},
+        {"fact": "The goblin shark is a deep-sea species with an extendable jaw for catching prey.", "source": "Smithsonian"},
+        {"fact": "The Antarctic icefish has antifreeze proteins in its blood to survive freezing temperatures.", "source": "NOAA"},
+        {"fact": "Freshwater environments, like rivers and lakes, are home to species such as trout and catfish.", "source": "USGS"},
+        {"fact": "Fish in mangroves, like the mangrove snapper, use these ecosystems as nurseries.", "source": "NOAA"},
+        {"fact": "The Amazon basin is home to unique fish like piranhas and pink river dolphins.", "source": "WWF"},
+        {"fact": "Open-ocean fish, such as tuna, travel vast distances to find food and mates.", "source": "NOAA"},
+        {"fact": "Some fish, like the stonefish, camouflage themselves to blend into their surroundings.", "source": "Smithsonian"},
+        {"fact": "Archerfish can shoot jets of water to knock insects into the water for food.", "source": "Smithsonian"},
+        {"fact": "Betta fish, also known as Siamese fighting fish, are highly territorial.", "source": "NOAA"},
+        {"fact": "Schools of fish move in perfect synchronization to evade predators.", "source": "National Geographic"},
+        {"fact": "Some fish, like the triggerfish, can use tools, such as rocks, to crack open shells.", "source": "NOAA"},
+        {"fact": "The cichlid fish displays advanced parental care by protecting its eggs and fry.", "source": "Smithsonian"},
+        {"fact": "Male jawfish incubate eggs in their mouths until they hatch.", "source": "NOAA"},
+        {"fact": "Fish like the clown loach communicate by making clicking sounds.", "source": "Smithsonian"},
+        {"fact": "Salmon can navigate back to their birthplace using their sense of smell.", "source": "NOAA"},
+        {"fact": "Groupers hunt collaboratively with other species, such as moray eels.", "source": "Smithsonian"},
+        {"fact": "Fish like the killifish can leap out of the water to escape predators.", "source": "National Geographic"},
+        {"fact": "The glowing patterns of bioluminescent fish are still not fully understood.", "source": "NOAA"},
+        {"fact": "The exact mechanisms behind how fish migrate vast distances remain mysterious.", "source": "NOAA"},
+        {"fact": "Why certain fish evolve extreme adaptations, like the sawfish's rostrum, is still being studied.", "source": "Smithsonian"},
+        {"fact": "The Greenland shark, one of the longest-living vertebrates, can live for over 400 years, but its slow aging process is a mystery.", "source": "NOAA"},
+        {"fact": "Fish communication through chemical signals in water is not fully understood.", "source": "Smithsonian"},
+        {"fact": "The role of underwater \"fish choruses\" in ecosystems remains unclear.", "source": "NOAA"},
+        {"fact": "The discovery of \"fish rain,\" where fish fall from the sky during storms, remains unexplained.", "source": "National Geographic"},
+        {"fact": "The ghost shark, also called a chimaera, is rarely seen and poorly studied.", "source": "Smithsonian"},
+        {"fact": "How deep-sea fish survive the immense pressure of their habitats is still being investigated.", "source": "NOAA"},
+        {"fact": "The coelacanth's ability to remain largely unchanged for millions of years makes it a \"living fossil.\"", "source": "Smithsonian"},
+        {"fact": "Fish can recognize individual faces, a trait previously thought unique to humans.", "source": "National Geographic"},
+        {"fact": "Some fish are born as one sex but can switch genders later in life.", "source": "NOAA"},
+        {"fact": "The world's smallest fish is the Paedocypris, measuring just 0.3 inches long.", "source": "FishBase"},
+        {"fact": "Fish in urban environments have been found to adapt to pollution in surprising ways.", "source": "USGS"},
+        {"fact": "Lionfish, native to the Indo-Pacific, have become invasive in other regions, causing ecological damage.", "source": "NOAA"},
+        {"fact": "Sharks are immune to almost all known diseases.", "source": "Smithsonian"},
+        {"fact": "Fish like the paddlefish have sensory organs to detect plankton in murky waters.", "source": "NOAA"},
+        {"fact": "The world's largest fish, the whale shark, feeds mainly on tiny plankton.", "source": "NOAA"},
+        {"fact": "Stonefish venom is one of the most toxic in the animal kingdom.", "source": "Smithsonian"},
+        {"fact": "Some fish can survive being frozen and thawed without damage.", "source": "NOAA"},
+        {
+        "fact": "Forests cover about 31% of Earth's land area, equivalent to 4.06 billion hectares.",
+        "source": "FAO"
+        },
+        {
+        "fact": "The Amazon Rainforest is the world's largest tropical rainforest, spanning 5.5 million square kilometers.",
+        "source": "WWF"
+        },
+        {
+        "fact": "Forests act as the planet's lungs, absorbing carbon dioxide and producing oxygen.",
+        "source": "UNEP"
+        },
+        {
+        "fact": "The boreal forest, or taiga, is the world's largest biome, covering parts of North America, Europe, and Asia.",
+        "source": "NOAA"
+        },
+        {
+        "fact": "About 80% of terrestrial animals and plants live in forests.",
+        "source": "WWF"
+        },
+        {
+        "fact": "The Congo Rainforest is the second largest rainforest, located in Central Africa.",
+        "source": "WWF"
+        },
+        {
+        "fact": "Mangrove forests act as a buffer against storms and help prevent coastal erosion.",
+        "source": "NOAA"
+        },
+        {
+        "fact": "Deforestation contributes to about 10% of global greenhouse gas emissions.",
+        "source": "FAO"
+        },
+        {
+        "fact": "The temperate rainforests of the Pacific Northwest are among the most productive ecosystems in the world.",
+        "source": "National Park Service"
+        },
+        {
+        "fact": "Forests provide livelihoods for over 1.6 billion people worldwide.",
+        "source": "FAO"
+        },
+        {
+        "fact": "Rainforests only cover about 6% of Earth's surface but house over 50% of its species.",
+        "source": "UNEP"
+        },
+        {
+        "fact": "The Amazon River, flowing through the rainforest, is the second longest river in the world.",
+        "source": "WWF"
+        },
+        {
+        "fact": "The Amazon produces 20% of the world's oxygen, earning it the nickname 'the lungs of the Earth.'",
+        "source": "WWF"
+        },
+        {
+        "fact": "Rainforests influence global weather patterns by recycling moisture into the atmosphere.",
+        "source": "NOAA"
+        },
+        {
+        "fact": "The forest canopy in tropical rainforests can reach heights of over 200 feet.",
+        "source": "Smithsonian"
+        },
+        {
+        "fact": "Many life-saving medicines are derived from rainforest plants, including treatments for cancer and malaria.",
+        "source": "National Institutes of Health"
+        },
+        {
+        "fact": "Rainforests are home to unique animals like the jaguar, sloth, and poison dart frog.",
+        "source": "WWF"
+        },
+        {
+        "fact": "The Amazon Rainforest spans nine countries, with most of it located in Brazil.",
+        "source": "WWF"
+        },
+        {
+        "fact": "The rainforest soil is surprisingly poor in nutrients; most nutrients are found in the vegetation itself.",
+        "source": "UNEP"
+        },
+        {
+        "fact": "The Amazon River basin is home to over 3,000 fish species, many of which are found nowhere else.",
+        "source": "Smithsonian"
+        },
+        {
+        "fact": "Cloud forests, found in tropical mountain regions, are shrouded in mist and support rare species.",
+        "source": "WWF"
+        },
+        {
+        "fact": "The Black Forest in Germany inspired numerous fairy tales.",
+        "source": "VisitGermany"
+        },
+        {
+        "fact": "The Sundarbans mangrove forest is home to the endangered Bengal tiger.",
+        "source": "WWF"
+        },
+        {
+        "fact": "The Redwood National and State Parks in California protect some of the tallest trees in the world.",
+        "source": "National Park Service"
+        },
+        {
+        "fact": "The eucalyptus forests of Australia are vital habitats for koalas.",
+        "source": "Australian Wildlife Conservancy"
+        },
+        {
+        "fact": "The Valdivian temperate rainforest in South America is one of the few temperate rainforests in the world.",
+        "source": "WWF"
+        },
+        {
+        "fact": "The Great Bear Rainforest in Canada is home to the rare white Kermode bear, also known as the spirit bear.",
+        "source": "Canadian Geographic"
+        },
+        {
+        "fact": "The Taman Negara Rainforest in Malaysia is one of the oldest rainforests, dating back 130 million years.",
+        "source": "WWF"
+        },
+        {
+        "fact": "Boreal forests store vast amounts of carbon, playing a critical role in mitigating climate change.",
+        "source": "UNEP"
+        },
+        {
+        "fact": "The Kakamega Forest in Kenya is the last remnant of the Guineo-Congolian rainforest in East Africa.",
+        "source": "WWF"
+        },
+        {
+            "fact": "The Amazon Rainforest contains hidden geoglyphs believed to date back thousands of years.",
+            "source": "UNESCO"
+          },
+          {
+            "fact": "Over 400 billion trees are estimated to grow in the Amazon.",
+            "source": "WWF"
+          },
+          {
+            "fact": "The Amazon has 'flying rivers,' where moisture from the forest forms massive aerial flows of water vapor.",
+            "source": "NOAA"
+          },
+          {
+            "fact": "The Amazon basin experiences 'fish rains,' where fish fall from the sky during storms.",
+            "source": "Local accounts"
+          },
+          {
+            "fact": "Some Amazonian tribes use plants like ayahuasca in spiritual practices.",
+            "source": "Smithsonian"
+          },
+          {
+            "fact": "Pink river dolphins, or botos, are unique to the Amazon and hold cultural significance in local legends.",
+            "source": "WWF"
+          },
+          {
+            "fact": "The Amazon has 'dark water' rivers like the Rio Negro, which appear black due to decomposed vegetation.",
+            "source": "Smithsonian"
+          },
+          {
+            "fact": "Researchers have found evidence of ancient civilizations within the Amazon, including vast urban centers.",
+            "source": "Nature Journal"
+          },
+          {
+            "fact": "The Amazon is one of the noisiest places on Earth, with sounds from insects, birds, and mammals filling the air.",
+            "source": "WWF"
+          },
+          {
+            "fact": "The Amazon's biodiversity includes giant otters, anacondas, and harpy eagles.",
+            "source": "WWF"
+          },
+          {
+            "fact": "Forests absorb about 2.6 billion tons of carbon dioxide annually.",
+            "source": "FAO"
+          },
+          {
+            "fact": "They help regulate the global water cycle, influencing rainfall patterns.",
+            "source": "UNEP"
+          },
+          {
+            "fact": "Forests prevent soil erosion by stabilizing the ground with their roots.",
+            "source": "USGS"
+          },
+          {
+            "fact": "They are a source of non-timber products like honey, nuts, and medicinal plants.",
+            "source": "FAO"
+          },
+          {
+            "fact": "Forests provide ecotourism opportunities, generating income for local communities.",
+            "source": "WWF"
+          },
+          {
+            "fact": "Mangrove forests reduce the impact of tsunamis and hurricanes on coastal areas.",
+            "source": "NOAA"
+          },
+          {
+            "fact": "Urban forests improve air quality and reduce urban heat islands.",
+            "source": "UNEP"
+          },
+          {
+            "fact": "Forests play a key role in filtering and purifying water supplies.",
+            "source": "WWF"
+          },
+          {
+            "fact": "Forest conservation helps protect endangered species and their habitats.",
+            "source": "UNEP"
+          },
+          {
+            "fact": "Forests contribute to cultural and spiritual practices for many indigenous communities.",
+            "source": "Smithsonian"
+          }
+                
+      ]      
+}
