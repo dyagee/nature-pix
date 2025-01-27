@@ -1,6 +1,9 @@
 // ignore_for_file: avoid_print
 
+import 'dart:async';
+
 import 'package:naturepix/services/api_calls.dart';
+import 'package:naturepix/utils/json_util.dart';
 import 'package:flutter/material.dart';
 //import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,6 +19,10 @@ class Loading extends StatefulWidget {
 }
 
 class _LoadingState extends State<Loading> {
+  // variables for facts
+  List<Fact> shuffledFacts = [];
+  int currentFactIndex = 0;
+  Timer? timer;
   //vast of the variables are imported from api_calls package
 
   //randomly generated index
@@ -66,7 +73,28 @@ class _LoadingState extends State<Loading> {
   @override
   void initState() {
     super.initState();
+    loadFacts().then(
+      (factList) {
+        // shuffle list and limit to 3 elements
+        shuffledFacts = factList.facts..shuffle(Random());
+        shuffledFacts = shuffledFacts.take(2).toList();
+        setState(() {});
+      },
+    );
+
+    // Start timer to rotate facts
+    // timer = Timer.periodic(const Duration(seconds: 7), (timer) {
+    //   setState(() {
+    //     currentFactIndex = (currentFactIndex + 1) % shuffledFacts.length;
+    //   });
+    // });
     firstApiCall();
+  }
+
+  @override
+  void dispose() {
+    timer?.cancel();
+    super.dispose();
   }
 
   @override
@@ -88,27 +116,60 @@ class _LoadingState extends State<Loading> {
                 child: Center(
                   child: AnimatedTextKit(animatedTexts: [
                     ColorizeAnimatedText(
-                      'Amazing mother Earth',
+                      'amazing mother Earth',
                       textStyle: colorizeTextStyle,
                       colors: colorizeColors,
                     ),
                     ColorizeAnimatedText(
-                      "Beautiful....",
+                      "beautiful....",
                       textStyle: colorizeTextStyle,
                       colors: colorizeColors,
                     ),
                     ColorizeAnimatedText(
-                      'Nature in its splendour....',
+                      'nature in its splendour....',
                       textStyle: colorizeTextStyle,
                       colors: colorizeColors,
                     ),
                     ColorizeAnimatedText(
-                      'Explore....',
+                      'explore....',
                       textStyle: colorizeTextStyle,
                       colors: colorizeColors,
                     ),
                   ]),
                 ),
+              ),
+              const SizedBox(
+                height: 150,
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.75,
+                child: shuffledFacts.isEmpty
+                    ? Text(
+                        "Loading facts...",
+                        style: colorizeTextStyle.copyWith(
+                            fontStyle: FontStyle.italic, color: Colors.white),
+                        textAlign: TextAlign.center,
+                      )
+                    : Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            shuffledFacts[currentFactIndex].fact,
+                            style: colorizeTextStyle.copyWith(
+                                fontSize: 13, color: Colors.white),
+                            textAlign: TextAlign.center,
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            "[${shuffledFacts[currentFactIndex].source}]",
+                            style: colorizeTextStyle.copyWith(
+                                fontStyle: FontStyle.italic,
+                                fontSize: 10,
+                                color: Colors.white),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
               ),
             ],
           ),
