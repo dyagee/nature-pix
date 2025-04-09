@@ -7,7 +7,27 @@ extractUrls(hr) {
   //a collection to hold returned key info
   List<Map> listviewUrls = [];
 
+  // List of tags to avoid
+  final List tagsToAvoid = [
+    'illustration',
+    'cartoon',
+    'sketch',
+    'drawing',
+    'painting',
+    'art',
+    'digital art',
+    'outline',
+    'vector',
+    'anime',
+  ];
+
   for (dynamic element in hr) {
+    final tags = (element['tags'] ?? '').toString().toLowerCase();
+
+    // Check if any tagToAvoid exists in the image tags
+    final containsUnwantedTag = tagsToAvoid.any((tag) => tags.contains(tag));
+    if (containsUnwantedTag) continue;
+
     Map<String, dynamic> queryResults = {
       'webformatURL': element["webformatURL"],
       'userId': element["user_id"],

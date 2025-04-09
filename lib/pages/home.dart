@@ -106,9 +106,11 @@ class _HomePageState extends State<HomePage> {
     final data =
         ModalRoute.of(context)!.settings.arguments as Map<dynamic, dynamic>?;
 
-    imgUrls = data?['imgs'];
-    qIndex = data?['index'];
-    pageNumber = data?['pageNumber'];
+    setState(() {
+      imgUrls = data?['imgs'];
+      qIndex = data?['index'];
+      pageNumber = data?['pageNumber'];
+    });
 
     //print(imgUrls);
 
@@ -342,6 +344,9 @@ class _HomePageState extends State<HomePage> {
                 color: const Color(0xFFBCC6CC),
                 splashColor: const Color(0xFF00AEEF),
                 onPressed: () {
+                  setState((){
+                    imgUrls = [];
+                  });
                   Navigator.pushReplacementNamed(
                     context,
                     '/refresh',
