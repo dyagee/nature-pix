@@ -46,12 +46,12 @@ class _NextPageState extends State<NextPage> {
       MakeApiCall instance =
           MakeApiCall(domain: url, path: path, qparams: nparams);
       var newImages = await instance.getImages();
-      newImages.shuffle();
+      // newImages.shuffle();
       // ignore: avoid_print
       //print("imgsL: $newImages");
 
       //delay some seconds before home page
-      Future.delayed(const Duration(milliseconds: 10000), () {
+      Future.delayed(const Duration(milliseconds: 5000), () {
         if (mounted) {
           Navigator.pushReplacementNamed(context, '/home', arguments: {
             'imgs': newImages,

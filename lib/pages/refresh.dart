@@ -44,7 +44,7 @@ class _RefreshState extends State<Refresh> {
     var newImages = await instance.getImages();
 
     //delay some seconds before home page
-    Future.delayed(const Duration(milliseconds: 10000), () {
+    Future.delayed(const Duration(milliseconds: 4000), () {
       if (mounted) {
         Navigator.pushReplacementNamed(context, '/home', arguments: {
           'imgs': newImages,
@@ -83,12 +83,12 @@ class _RefreshState extends State<Refresh> {
                 child: Center(
                   child: AnimatedTextKit(animatedTexts: [
                     ColorizeAnimatedText(
-                      'Loading....',
+                      'Fetching....',
                       textStyle: colorizeTextStyle,
                       colors: colorizeColors,
                     ),
                     ColorizeAnimatedText(
-                      "Images can be refreshed after 30mins....",
+                      "This may take few seconds....",
                       textStyle: colorizeTextStyle,
                       colors: colorizeColors,
                     ),

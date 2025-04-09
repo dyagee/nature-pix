@@ -19,6 +19,10 @@ extractUrls(hr) {
     'outline',
     'vector',
     'anime',
+    'ai generated',
+    'watercolor',
+    'funny',
+    'draw',
   ];
 
   for (dynamic element in hr) {
@@ -27,6 +31,8 @@ extractUrls(hr) {
     // Check if any tagToAvoid exists in the image tags
     final containsUnwantedTag = tagsToAvoid.any((tag) => tags.contains(tag));
     if (containsUnwantedTag) continue;
+    // ignore: avoid_print
+    // print(tags);
 
     Map<String, dynamic> queryResults = {
       'webformatURL': element["webformatURL"],

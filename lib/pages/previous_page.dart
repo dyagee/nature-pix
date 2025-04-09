@@ -61,7 +61,7 @@ class _PreviousPageState extends State<PreviousPage> {
       });
     } else {
       //delay some seconds before home page
-      Future.delayed(const Duration(milliseconds: 10000), () {
+      Future.delayed(const Duration(milliseconds: 4000), () {
         if (mounted) {
           Navigator.pushReplacementNamed(context, '/home', arguments: {
             'imgs': imageList,
@@ -108,7 +108,7 @@ class _PreviousPageState extends State<PreviousPage> {
                 child: Center(
                   child: AnimatedTextKit(animatedTexts: [
                     ColorizeAnimatedText(
-                      'Loading....',
+                      'Reloading....',
                       textStyle: colorizeTextStyle,
                       colors: colorizeColors,
                     ),

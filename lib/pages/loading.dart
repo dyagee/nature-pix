@@ -21,8 +21,8 @@ class Loading extends StatefulWidget {
 class _LoadingState extends State<Loading> {
   // variables for facts
   List<Fact> shuffledFacts = [];
-  int currentFactIndex = 0;
-  Timer? timer;
+  // int currentFactIndex = 0;
+  // Timer? timer;
   //vast of the variables are imported from api_calls package
 
   //randomly generated index
@@ -43,7 +43,7 @@ class _LoadingState extends State<Loading> {
       letterSpacing: 2.0);
 
   void firstApiCall() async {
-    print(qList);
+    // print(qList);
 
     Map<String, String> params = {
       'key': key,
@@ -56,7 +56,7 @@ class _LoadingState extends State<Loading> {
     MakeApiCall instance =
         MakeApiCall(domain: url, path: path, qparams: params);
     var images = await instance.getImages();
-    images.shuffle();
+    // images.shuffle();
 
     //delay some seconds before home page
     Future.delayed(const Duration(milliseconds: 10000), () {
@@ -93,7 +93,7 @@ class _LoadingState extends State<Loading> {
 
   @override
   void dispose() {
-    timer?.cancel();
+    // timer?.cancel();
     super.dispose();
   }
 
@@ -112,64 +112,32 @@ class _LoadingState extends State<Loading> {
                 height: 2.0,
               ),
               SizedBox(
-                width: 400,
-                child: Center(
-                  child: AnimatedTextKit(animatedTexts: [
-                    ColorizeAnimatedText(
-                      'amazing mother Earth',
-                      textStyle: colorizeTextStyle,
-                      colors: colorizeColors,
-                    ),
-                    ColorizeAnimatedText(
-                      "beautiful....",
-                      textStyle: colorizeTextStyle,
-                      colors: colorizeColors,
-                    ),
-                    ColorizeAnimatedText(
-                      'nature in its splendour....',
-                      textStyle: colorizeTextStyle,
-                      colors: colorizeColors,
-                    ),
-                    ColorizeAnimatedText(
-                      'explore....',
-                      textStyle: colorizeTextStyle,
-                      colors: colorizeColors,
-                    ),
-                  ]),
-                ),
-              ),
-              const SizedBox(
-                height: 150,
-              ),
-              SizedBox(
                 width: MediaQuery.of(context).size.width * 0.75,
                 child: shuffledFacts.isEmpty
-                    ? Text(
-                        "Loading facts...",
-                        style: colorizeTextStyle.copyWith(
-                            fontStyle: FontStyle.italic, color: Colors.white),
-                        textAlign: TextAlign.center,
+                    ? Center(
+                        child: Text(
+                          "Loading facts...",
+                          style: colorizeTextStyle.copyWith(
+                              fontStyle: FontStyle.italic, color: Colors.white),
+                          textAlign: TextAlign.center,
+                        ),
                       )
-                    : Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            shuffledFacts[currentFactIndex].fact,
-                            style: colorizeTextStyle.copyWith(
-                                fontSize: 13, color: Colors.white),
-                            textAlign: TextAlign.center,
-                          ),
-                          const SizedBox(height: 4),
-                          Text(
-                            "[${shuffledFacts[currentFactIndex].source}]",
-                            style: colorizeTextStyle.copyWith(
-                                fontStyle: FontStyle.italic,
-                                fontSize: 10,
-                                color: Colors.white),
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
-                      ),
+                    : AnimatedTextKit(
+                        pause: const Duration(milliseconds: 50),
+                        animatedTexts: [
+                            ColorizeAnimatedText(
+                              speed: const Duration(milliseconds: 100),
+                              "${shuffledFacts[0].fact} [source: ${shuffledFacts[0].source}]",
+                              textStyle: colorizeTextStyle,
+                              colors: colorizeColors,
+                            ),
+                            ColorizeAnimatedText(
+                              speed: const Duration(milliseconds: 50),
+                              "${shuffledFacts[1].fact} [source: ${shuffledFacts[1].source}]",
+                              textStyle: colorizeTextStyle,
+                              colors: colorizeColors,
+                            ),
+                          ]),
               ),
             ],
           ),
