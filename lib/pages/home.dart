@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print, unused_import
 
 import 'package:flutter_media_downloader/flutter_media_downloader.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 // import 'package:image_downloader/image_downloader.dart';
 import 'package:naturepix/services/appname.dart';
 import 'package:flutter/material.dart';
@@ -32,6 +33,13 @@ class _HomePageState extends State<HomePage> {
   bool _isVisible = false;
   bool _isDownload = false;
   String _message = "";
+
+  // svg widget for error
+  static String assetName = 'lib/assets/images/not_found.svg';
+  final Widget errorSvg = SvgPicture.asset(
+    assetName,
+    semanticsLabel: 'Error SVG',
+  );
 
   void _enableDownload() {
     if (!_isDownload) {
@@ -112,6 +120,13 @@ class _HomePageState extends State<HomePage> {
       pageNumber = data?['pageNumber'];
     });
 
+    // show navigation
+    if (imgUrls.isEmpty) {
+      setState(() {
+        _isVisible = true;
+      });
+    }
+
     //print(imgUrls);
 
     return Scaffold(
@@ -124,29 +139,25 @@ class _HomePageState extends State<HomePage> {
       ),
       body: SafeArea(
         child: imgUrls.isEmpty
-            ? Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height,
-                decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('lib/assets/images/flp.jpg'))),
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height,
-                  color: const Color.fromARGB(163, 103, 180, 96),
-                  child: Center(
-                    child: Text(
-                      'Nothing fetched! \n something went; \ntry again.... ',
-                      style: TextStyle(
-                        letterSpacing: 1.5,
-                        color: Colors.red,
-                        fontSize: 26.0,
-                        fontFamily: GoogleFonts.allertaStencil().fontFamily,
-                        fontWeight: FontWeight.w300,
+            ? Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(child: errorSvg),
+                    Expanded(
+                      child: Text(
+                        'Something went; \ntry again.... ',
+                        style: TextStyle(
+                          letterSpacing: 1.5,
+                          color: Colors.red,
+                          fontSize: 18.0,
+                          fontFamily: GoogleFonts.allertaStencil().fontFamily,
+                          fontWeight: FontWeight.w300,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
                     ),
-                  ),
+                  ],
                 ),
               )
             : PageView.builder(
@@ -344,7 +355,7 @@ class _HomePageState extends State<HomePage> {
                 color: const Color(0xFFBCC6CC),
                 splashColor: const Color(0xFF00AEEF),
                 onPressed: () {
-                  setState((){
+                  setState(() {
                     imgUrls = [];
                   });
                   Navigator.pushReplacementNamed(
