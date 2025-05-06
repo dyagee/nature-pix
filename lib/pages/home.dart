@@ -9,6 +9,7 @@ import 'package:drop_shadow_image/drop_shadow_image.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_styled_toast/flutter_styled_toast.dart';
+import 'package:naturepix/services/connectivity_wrapper.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -122,6 +123,7 @@ class _HomePageState extends State<HomePage> {
 
     // show navigation
     if (imgUrls.isEmpty) {
+      // work around to show navigation to refresh
       setState(() {
         _isVisible = true;
       });
@@ -129,272 +131,288 @@ class _HomePageState extends State<HomePage> {
 
     //print(imgUrls);
 
-    return Scaffold(
-      backgroundColor: const Color(0xFF808080),
-      appBar: AppBar(
-        title: appName(),
-        //backgroundColor: Theme.of(context).primaryColor.withOpacity(0.8),
-        backgroundColor: const Color(0xFF37474F),
-        centerTitle: true,
-      ),
-      body: SafeArea(
-        child: imgUrls.isEmpty
-            ? Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Expanded(child: errorSvg),
-                    Expanded(
-                      child: Text(
-                        'Something went; \ntry again.... ',
-                        style: TextStyle(
-                          letterSpacing: 1.5,
-                          color: Colors.red,
-                          fontSize: 18.0,
-                          fontFamily: GoogleFonts.allertaStencil().fontFamily,
-                          fontWeight: FontWeight.w300,
+    return ConnectivityWrapper(
+      child: Scaffold(
+        backgroundColor: const Color(0xFF808080),
+        appBar: AppBar(
+          title: appName(),
+          //backgroundColor: Theme.of(context).primaryColor.withOpacity(0.8),
+          backgroundColor: const Color(0xFF37474F),
+          centerTitle: true,
+        ),
+        body: SafeArea(
+          child: imgUrls.isEmpty
+              ? Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Expanded(child: errorSvg),
+                      Expanded(
+                        child: Text(
+                          'Something went; \ntry again.... ',
+                          style: TextStyle(
+                            letterSpacing: 1.5,
+                            color: Colors.red,
+                            fontSize: 18.0,
+                            fontFamily: GoogleFonts.allertaStencil().fontFamily,
+                            fontWeight: FontWeight.w300,
+                          ),
+                          textAlign: TextAlign.center,
                         ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ],
-                ),
-              )
-            : PageView.builder(
-                itemCount: imgUrls.length,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.fromLTRB(0.0, 2.0, 0.0, 2.0),
-                    child: Center(
-                      child: Stack(
-                          alignment: AlignmentDirectional.topCenter,
-                          children: <Widget>[
-                            DropShadowImage(
-                              offset: const Offset(8.0, 8.0),
-                              scale: 3.0,
-                              blurRadius: 16.0,
-                              borderRadius: 8.0,
-                              image: Image.network(
-                                imgUrls[index]['largeImageURL'],
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            //overlay interactive image
-                            Positioned.fill(
-                              child: InteractiveViewer(
-                                panEnabled: true,
-                                minScale: 1.0,
-                                maxScale: 5.0,
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  child: Image.network(
-                                    imgUrls[index]['largeImageURL'],
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Positioned(
-                              //left: (MediaQuery.of(context).size.width / 2),
-                              left: 10.0,
-                              bottom: 1.0,
-                              child: _isDownload
-                                  ? FloatingActionButton(
-                                      mini: true,
-                                      tooltip: 'Download',
-                                      backgroundColor:
-                                          const Color.fromARGB(192, 30, 44, 37),
-                                      splashColor: Colors.cyan[50],
-                                      onPressed: () async {
-                                        _downloadImage(
-                                            imgUrls[index]['largeImageURL']);
-
-                                        showToast(
-                                          _message,
-                                          context: context,
-                                          animation: StyledToastAnimation
-                                              .slideFromBottom,
-                                          duration: const Duration(seconds: 2),
-                                        );
-                                      },
-                                      child: const Icon(
-                                        FontAwesomeIcons.download,
-                                        size: 24.0,
-                                        color: Color(0xFFBCC6CC),
-                                      ),
-                                    )
-                                  : Container(),
-                            ),
-                          ]),
-                    ),
-                  );
-                }),
-      ),
-
-      //show caretup if no bottomBar
-      //show caretdown if bottomBar displayed
-      floatingActionButton: _isVisible
-          ? SizedBox(
-              width: 24.0,
-              height: 24.0,
-              child: RawMaterialButton(
-                shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(4.0))),
-                fillColor: Colors.transparent,
-                elevation: 2.5,
-                onPressed: () {
-                  _hide();
-                },
-                child: const Icon(
-                  FontAwesomeIcons.caretDown,
-                  size: 22.0,
-                  color: Color(0xFFBCC6CC),
-                ),
-              ),
-            )
-          : SizedBox(
-              width: 28.0,
-              height: 28.0,
-              child: RawMaterialButton(
-                shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(4.0))),
-                fillColor: Colors.transparent,
-                elevation: 2.5,
-                onPressed: () {
-                  _show();
-                },
-                child: const Icon(
-                  FontAwesomeIcons.bars,
-                  size: 16.0,
-                  color: Color(0xFFBCC6CC),
-                ),
-              ),
-            ),
-
-      //dock the floatingButton to not cover app content
-      floatingActionButtonLocation: _isVisible
-          ? FloatingActionButtonLocation.endDocked
-          : FloatingActionButtonLocation.centerDocked,
-
-      bottomNavigationBar: AnimatedContainer(
-        duration: const Duration(milliseconds: 250),
-        height: _isVisible ? 60.0 : 0.0,
-        child: BottomAppBar(
-          // color: Theme.of(context).primaryColor.withAlpha((0.8 * 255).toInt()),
-          color: const Color(0xFF37474F),
-          elevation: 2.5,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              IconButton(
-                tooltip: 'Enable Download',
-                color: const Color(0xFFBCC6CC),
-                splashColor: const Color(0xFF00AEEF),
-                onPressed: () => showDialog<String>(
-                  context: context,
-                  barrierColor: const Color.fromARGB(162, 57, 105, 103),
-                  builder: (BuildContext context) => AlertDialog(
-                    //title: const Text('AlertDialog Title'),
-                    icon: const Icon(
-                      FontAwesomeIcons.gears,
-                      size: 30.0,
-                    ),
-                    actionsAlignment: MainAxisAlignment.spaceEvenly,
-                    content: const Text(
-                      'Enable Images Download?',
-                      textAlign: TextAlign.center,
-                    ),
-                    actions: <Widget>[
-                      _isDownload
-                          ? TextButton(
-                              onPressed: () {
-                                _disableDownload();
-                                Navigator.of(context).pop();
-                              },
-                              child: const Text('Disable'),
-                            )
-                          : TextButton(
-                              onPressed: () {
-                                _enableDownload();
-                                Navigator.of(context).pop();
-                              },
-                              child: const Text('Enable'),
-                            ),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                        child: const Text('Cancel'),
                       ),
                     ],
                   ),
+                )
+              : PageView.builder(
+                  itemCount: imgUrls.length,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.fromLTRB(0.0, 2.0, 0.0, 2.0),
+                      child: Center(
+                        child: Stack(
+                            alignment: AlignmentDirectional.topCenter,
+                            children: <Widget>[
+                              DropShadowImage(
+                                offset: const Offset(8.0, 8.0),
+                                scale: 3.0,
+                                blurRadius: 16.0,
+                                borderRadius: 8.0,
+                                image: Image.network(
+                                  imgUrls[index]['largeImageURL'],
+                                  fit: BoxFit.cover,
+                                  errorBuilder: (context, error, stackTrace) {
+                                    return Image.asset(
+                                      'lib/assets/images/no_image.png',
+                                      fit: BoxFit.cover,
+                                    );
+                                  },
+                                ),
+                              ),
+                              //overlay interactive image
+                              Positioned.fill(
+                                child: InteractiveViewer(
+                                  panEnabled: true,
+                                  minScale: 1.0,
+                                  maxScale: 5.0,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    child: Image.network(
+                                      imgUrls[index]['largeImageURL'],
+                                      fit: BoxFit.cover,
+                                      errorBuilder:
+                                          (context, error, stackTrace) {
+                                        return Image.asset(
+                                          'lib/assets/images/no_image.png',
+                                          fit: BoxFit.cover,
+                                        );
+                                      },
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                //left: (MediaQuery.of(context).size.width / 2),
+                                left: 10.0,
+                                bottom: 1.0,
+                                child: _isDownload
+                                    ? FloatingActionButton(
+                                        mini: true,
+                                        tooltip: 'Download',
+                                        backgroundColor: const Color.fromARGB(
+                                            192, 30, 44, 37),
+                                        splashColor: Colors.cyan[50],
+                                        onPressed: () async {
+                                          _downloadImage(
+                                              imgUrls[index]['largeImageURL']);
+
+                                          showToast(
+                                            _message,
+                                            context: context,
+                                            animation: StyledToastAnimation
+                                                .slideFromBottom,
+                                            duration:
+                                                const Duration(seconds: 2),
+                                          );
+                                        },
+                                        child: const Icon(
+                                          FontAwesomeIcons.download,
+                                          size: 24.0,
+                                          color: Color(0xFFBCC6CC),
+                                        ),
+                                      )
+                                    : Container(),
+                              ),
+                            ]),
+                      ),
+                    );
+                  }),
+        ),
+
+        //show caretup if no bottomBar
+        //show caretdown if bottomBar displayed
+        floatingActionButton: _isVisible
+            ? SizedBox(
+                width: 24.0,
+                height: 24.0,
+                child: RawMaterialButton(
+                  shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(4.0))),
+                  fillColor: Colors.transparent,
+                  elevation: 2.5,
+                  onPressed: () {
+                    _hide();
+                  },
+                  child: const Icon(
+                    FontAwesomeIcons.caretDown,
+                    size: 22.0,
+                    color: Color(0xFFBCC6CC),
+                  ),
                 ),
-                icon: const Icon(
-                    // FontAwesomeIcons.gear,
-                    Icons.settings_rounded),
-                iconSize: 30.0,
+              )
+            : SizedBox(
+                width: 28.0,
+                height: 28.0,
+                child: RawMaterialButton(
+                  shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(4.0))),
+                  fillColor: Colors.transparent,
+                  elevation: 2.5,
+                  onPressed: () {
+                    _show();
+                  },
+                  child: const Icon(
+                    FontAwesomeIcons.bars,
+                    size: 16.0,
+                    color: Color(0xFFBCC6CC),
+                  ),
+                ),
               ),
-              IconButton(
-                tooltip: 'Previous Page',
-                color: const Color(0xFFBCC6CC),
-                splashColor: const Color(0xFF00AEEF),
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/previous-page',
-                      arguments: {
-                        'imgs': imgUrls,
-                        'index': qIndex,
-                        'pageNumber': pageNumber,
-                      });
-                },
-                icon: const Icon(Icons.rotate_left_rounded),
-                iconSize: 30.0,
-              ),
-              IconButton(
-                tooltip: 'Refresh',
-                color: const Color(0xFFBCC6CC),
-                splashColor: const Color(0xFF00AEEF),
-                onPressed: () {
-                  setState(() {
-                    imgUrls = [];
-                  });
-                  Navigator.pushReplacementNamed(
-                    context,
-                    '/refresh',
-                  );
-                },
-                icon: const Icon(Icons.autorenew_outlined),
-                iconSize: 30.0,
-              ),
-              IconButton(
-                tooltip: 'Next Page',
-                color: const Color(0xFFBCC6CC),
-                splashColor: const Color(0xFF00AEEF),
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/next-page',
-                      arguments: {
-                        'imgs': imgUrls,
-                        'index': qIndex,
-                        'pageNumber': pageNumber,
-                      });
-                },
-                icon: const Icon(Icons.rotate_right_rounded),
-                iconSize: 30.0,
-              ),
-              IconButton(
-                tooltip: 'About App',
-                color: const Color(0xFFBCC6CC),
-                splashColor: const Color(0xFF00AEEF),
-                onPressed: () {
-                  Navigator.pushNamed(
-                    context,
-                    '/about-app',
-                  );
-                },
-                icon: const Icon(Icons.more_vert_outlined),
-                iconSize: 30.0,
-              ),
-            ],
+
+        //dock the floatingButton to not cover app content
+        floatingActionButtonLocation: _isVisible
+            ? FloatingActionButtonLocation.endDocked
+            : FloatingActionButtonLocation.centerDocked,
+
+        bottomNavigationBar: AnimatedContainer(
+          duration: const Duration(milliseconds: 250),
+          height: _isVisible ? 60.0 : 0.0,
+          child: BottomAppBar(
+            // color: Theme.of(context).primaryColor.withAlpha((0.8 * 255).toInt()),
+            color: const Color(0xFF37474F),
+            elevation: 2.5,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                IconButton(
+                  tooltip: 'Enable Download',
+                  color: const Color(0xFFBCC6CC),
+                  splashColor: const Color(0xFF00AEEF),
+                  onPressed: () => showDialog<String>(
+                    context: context,
+                    barrierColor: const Color.fromARGB(162, 57, 105, 103),
+                    builder: (BuildContext context) => AlertDialog(
+                      //title: const Text('AlertDialog Title'),
+                      icon: const Icon(
+                        FontAwesomeIcons.gears,
+                        size: 30.0,
+                      ),
+                      actionsAlignment: MainAxisAlignment.spaceEvenly,
+                      content: const Text(
+                        'Enable Images Download?',
+                        textAlign: TextAlign.center,
+                      ),
+                      actions: <Widget>[
+                        _isDownload
+                            ? TextButton(
+                                onPressed: () {
+                                  _disableDownload();
+                                  Navigator.of(context).pop();
+                                },
+                                child: const Text('Disable'),
+                              )
+                            : TextButton(
+                                onPressed: () {
+                                  _enableDownload();
+                                  Navigator.of(context).pop();
+                                },
+                                child: const Text('Enable'),
+                              ),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: const Text('Cancel'),
+                        ),
+                      ],
+                    ),
+                  ),
+                  icon: const Icon(
+                      // FontAwesomeIcons.gear,
+                      Icons.settings_rounded),
+                  iconSize: 30.0,
+                ),
+                IconButton(
+                  tooltip: 'Previous Page',
+                  color: const Color(0xFFBCC6CC),
+                  splashColor: const Color(0xFF00AEEF),
+                  onPressed: () {
+                    Navigator.pushReplacementNamed(context, '/previous-page',
+                        arguments: {
+                          'imgs': imgUrls,
+                          'index': qIndex,
+                          'pageNumber': pageNumber,
+                        });
+                  },
+                  icon: const Icon(Icons.rotate_left_rounded),
+                  iconSize: 30.0,
+                ),
+                IconButton(
+                  tooltip: 'Refresh',
+                  color: const Color(0xFFBCC6CC),
+                  splashColor: const Color(0xFF00AEEF),
+                  onPressed: () {
+                    setState(() {
+                      imgUrls = [];
+                    });
+                    Navigator.pushReplacementNamed(
+                      context,
+                      '/refresh',
+                    );
+                  },
+                  icon: const Icon(Icons.autorenew_outlined),
+                  iconSize: 30.0,
+                ),
+                IconButton(
+                  tooltip: 'Next Page',
+                  color: const Color(0xFFBCC6CC),
+                  splashColor: const Color(0xFF00AEEF),
+                  onPressed: () {
+                    Navigator.pushReplacementNamed(context, '/next-page',
+                        arguments: {
+                          'imgs': imgUrls,
+                          'index': qIndex,
+                          'pageNumber': pageNumber,
+                        });
+                  },
+                  icon: const Icon(Icons.rotate_right_rounded),
+                  iconSize: 30.0,
+                ),
+                IconButton(
+                  tooltip: 'About App',
+                  color: const Color(0xFFBCC6CC),
+                  splashColor: const Color(0xFF00AEEF),
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,
+                      '/about-app',
+                    );
+                  },
+                  icon: const Icon(Icons.more_vert_outlined),
+                  iconSize: 30.0,
+                ),
+              ],
+            ),
           ),
         ),
       ),
