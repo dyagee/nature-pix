@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:naturepix/services/api_calls.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:naturepix/services/connectivity_wrapper.dart';
 
 class NextPage extends StatefulWidget {
   const NextPage({super.key});
@@ -25,7 +26,7 @@ class _NextPageState extends State<NextPage> {
   ];
 
   TextStyle colorizeTextStyle = TextStyle(
-    fontSize: 10.0,
+    fontSize: 12.0,
     fontFamily: GoogleFonts.oswald().fontFamily,
     fontWeight: FontWeight.w600,
   );
@@ -84,55 +85,65 @@ class _NextPageState extends State<NextPage> {
     final data =
         ModalRoute.of(context)!.settings.arguments as Map<dynamic, dynamic>?;
 
-    nextPage(
-        index: data?['index'],
-        pageNumber: data?['pageNumber'],
-        imageList: data?['imgs']);
+    // nextPage(
+    //     index: data?['index'],
+    //     pageNumber: data?['pageNumber'],
+    //     imageList: data?['imgs']);
 
-    return Scaffold(
-        backgroundColor: const Color.fromARGB(117, 26, 55, 65),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              LoadingAnimationWidget.flickr(
-                leftDotColor: const Color.fromARGB(255, 6, 99, 33),
-                rightDotColor: const Color(0xFF00AEEF),
-                size: 58,
-              ),
-              const SizedBox(
-                height: 80.0,
-              ),
-              SizedBox(
-                width: 400,
-                child: Center(
-                  child: AnimatedTextKit(animatedTexts: [
-                    ColorizeAnimatedText(
-                      'Loading....',
-                      textStyle: colorizeTextStyle,
-                      colors: colorizeColors,
-                    ),
-                    ColorizeAnimatedText(
-                      "This may take some seconds....",
-                      textStyle: colorizeTextStyle,
-                      colors: colorizeColors,
-                    ),
-                    ColorizeAnimatedText(
-                      'Waiting....',
-                      textStyle: colorizeTextStyle,
-                      colors: colorizeColors,
-                    ),
-                    ColorizeAnimatedText(
-                      'Explore....',
-                      textStyle: colorizeTextStyle,
-                      colors: colorizeColors,
-                    ),
-                  ]),
+    return ConnectivityWrapper(
+      onConnectionRestored: [
+        () {
+          nextPage(
+              index: data?['index'],
+              pageNumber: data?['pageNumber'],
+              imageList: data?['imgs']);
+        }
+      ],
+      child: Scaffold(
+          backgroundColor: const Color.fromARGB(117, 26, 55, 65),
+          body: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                LoadingAnimationWidget.flickr(
+                  leftDotColor: const Color.fromARGB(255, 6, 99, 33),
+                  rightDotColor: const Color(0xFF00AEEF),
+                  size: 58,
                 ),
-              ),
-            ],
-          ),
-        ));
+                const SizedBox(
+                  height: 80.0,
+                ),
+                SizedBox(
+                  width: 400,
+                  child: Center(
+                    child: AnimatedTextKit(animatedTexts: [
+                      ColorizeAnimatedText(
+                        'Loading....',
+                        textStyle: colorizeTextStyle,
+                        colors: colorizeColors,
+                      ),
+                      ColorizeAnimatedText(
+                        "This may take some seconds....",
+                        textStyle: colorizeTextStyle,
+                        colors: colorizeColors,
+                      ),
+                      ColorizeAnimatedText(
+                        'Waiting....',
+                        textStyle: colorizeTextStyle,
+                        colors: colorizeColors,
+                      ),
+                      ColorizeAnimatedText(
+                        'Explore....',
+                        textStyle: colorizeTextStyle,
+                        colors: colorizeColors,
+                      ),
+                    ]),
+                  ),
+                ),
+              ],
+            ),
+          )),
+    );
   }
 }

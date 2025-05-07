@@ -58,7 +58,7 @@ class _ConnectivityWrapperState extends State<ConnectivityWrapper> {
         ScaffoldMessenger.of(context).hideCurrentSnackBar();
         _showDisconnectedSnackBar();
       }
-      if (!isOffline) {
+      if (!isInitial && !isOffline) {
         // First hide the red one if visible
         ScaffoldMessenger.of(context).hideCurrentSnackBar();
         _showReconnectedSnackBar();
@@ -70,6 +70,14 @@ class _ConnectivityWrapperState extends State<ConnectivityWrapper> {
               callback();
             }
           });
+        }
+      }
+
+      if (isInitial && !isOffline) {
+        if (widget.onConnectionRestored != null) {
+          for (var callback in widget.onConnectionRestored!) {
+            callback();
+          }
         }
       }
 
