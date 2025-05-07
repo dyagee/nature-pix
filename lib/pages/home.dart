@@ -163,89 +163,135 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                 )
-              : PageView.builder(
-                  itemCount: imgUrls.length,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.fromLTRB(0.0, 2.0, 0.0, 2.0),
-                      child: Center(
-                        child: Stack(
-                            alignment: AlignmentDirectional.topCenter,
-                            children: <Widget>[
-                              DropShadowImage(
-                                offset: const Offset(8.0, 8.0),
-                                scale: 3.0,
-                                blurRadius: 16.0,
-                                borderRadius: 8.0,
-                                image: Image.network(
-                                  imgUrls[index]['largeImageURL'],
-                                  fit: BoxFit.cover,
-                                  errorBuilder: (context, error, stackTrace) {
-                                    return Image.asset(
-                                      'lib/assets/images/no_image.png',
-                                      fit: BoxFit.cover,
-                                    );
-                                  },
-                                ),
-                              ),
-                              //overlay interactive image
-                              Positioned.fill(
-                                child: InteractiveViewer(
-                                  panEnabled: true,
-                                  minScale: 1.0,
-                                  maxScale: 5.0,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    child: Image.network(
-                                      imgUrls[index]['largeImageURL'],
-                                      fit: BoxFit.cover,
-                                      errorBuilder:
-                                          (context, error, stackTrace) {
-                                        return Image.asset(
-                                          'lib/assets/images/no_image.png',
-                                          fit: BoxFit.cover,
-                                        );
-                                      },
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Positioned(
-                                //left: (MediaQuery.of(context).size.width / 2),
-                                left: 10.0,
-                                bottom: 1.0,
-                                child: _isDownload
-                                    ? FloatingActionButton(
-                                        mini: true,
-                                        tooltip: 'Download',
-                                        backgroundColor: const Color.fromARGB(
-                                            192, 30, 44, 37),
-                                        splashColor: Colors.cyan[50],
-                                        onPressed: () async {
-                                          _downloadImage(
-                                              imgUrls[index]['largeImageURL']);
-
-                                          showToast(
-                                            _message,
-                                            context: context,
-                                            animation: StyledToastAnimation
-                                                .slideFromBottom,
-                                            duration:
-                                                const Duration(seconds: 2),
+              : ValueListenableBuilder(
+                  valueListenable: ConnectivityWrapper.connectionStatus,
+                  builder: (context, isConnected, _) {
+                    return PageView.builder(
+                        itemCount: imgUrls.length,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding:
+                                const EdgeInsets.fromLTRB(0.0, 2.0, 0.0, 2.0),
+                            child: Center(
+                              child: Stack(
+                                  alignment: AlignmentDirectional.topCenter,
+                                  children: <Widget>[
+                                    DropShadowImage(
+                                      offset: const Offset(8.0, 8.0),
+                                      scale: 3.0,
+                                      blurRadius: 16.0,
+                                      borderRadius: 8.0,
+                                      image: Image.network(
+                                        imgUrls[index]['largeImageURL'],
+                                        fit: BoxFit.cover,
+                                        errorBuilder:
+                                            (context, error, stackTrace) {
+                                          return Image.asset(
+                                            'lib/assets/images/no_image.png',
+                                            fit: BoxFit.cover,
                                           );
                                         },
-                                        child: const Icon(
-                                          FontAwesomeIcons.download,
-                                          size: 24.0,
-                                          color: Color(0xFFBCC6CC),
+                                      ),
+                                    ),
+                                    //overlay interactive image
+                                    Positioned.fill(
+                                      child: InteractiveViewer(
+                                        panEnabled: true,
+                                        minScale: 1.0,
+                                        maxScale: 5.0,
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          child: Image.network(
+                                            imgUrls[index]['largeImageURL'],
+                                            fit: BoxFit.cover,
+                                            errorBuilder:
+                                                (context, error, stackTrace) {
+                                              return Image.asset(
+                                                'lib/assets/images/no_image.png',
+                                                fit: BoxFit.cover,
+                                              );
+                                            },
+                                          ),
                                         ),
-                                      )
-                                    : Container(),
-                              ),
-                            ]),
-                      ),
-                    );
+                                      ),
+                                    ),
+                                    isConnected
+                                        ? Positioned(
+                                            //left: (MediaQuery.of(context).size.width / 2),
+                                            left: 10.0,
+                                            bottom: 1.0,
+                                            child: _isDownload
+                                                ? FloatingActionButton(
+                                                    mini: true,
+                                                    tooltip: 'Download',
+                                                    backgroundColor:
+                                                        const Color.fromARGB(
+                                                            192, 30, 44, 37),
+                                                    splashColor:
+                                                        Colors.cyan[50],
+                                                    onPressed: () async {
+                                                      _downloadImage(imgUrls[
+                                                              index]
+                                                          ['largeImageURL']);
+
+                                                      showToast(
+                                                        _message,
+                                                        context: context,
+                                                        animation:
+                                                            StyledToastAnimation
+                                                                .slideFromBottom,
+                                                        duration:
+                                                            const Duration(
+                                                                seconds: 2),
+                                                      );
+                                                    },
+                                                    child: const Icon(
+                                                      FontAwesomeIcons.download,
+                                                      size: 24.0,
+                                                      color: Color(0xFFBCC6CC),
+                                                    ),
+                                                  )
+                                                : Container(),
+                                          )
+                                        : Positioned(
+                                            //left: (MediaQuery.of(context).size.width / 2),
+                                            left: 10.0,
+                                            bottom: 1.0,
+                                            child: _isDownload
+                                                ? FloatingActionButton(
+                                                    mini: true,
+                                                    tooltip: "can't download",
+                                                    backgroundColor:
+                                                        Colors.grey.shade600,
+                                                    splashColor:
+                                                        Colors.cyan[50],
+                                                    onPressed: () async {
+                                                      showToast(
+                                                        "Can't download at the moment, No internet connection",
+                                                        context: context,
+                                                        animation:
+                                                            StyledToastAnimation
+                                                                .slideFromBottom,
+                                                        duration:
+                                                            const Duration(
+                                                                seconds: 2),
+                                                      );
+                                                    },
+                                                    child: Icon(
+                                                      FontAwesomeIcons.download,
+                                                      size: 24.0,
+                                                      color:
+                                                          Colors.grey.shade700,
+                                                    ),
+                                                  )
+                                                : Container(),
+                                          ),
+                                  ]),
+                            ),
+                          );
+                        });
                   }),
         ),
 

@@ -11,6 +11,9 @@ class ConnectivityWrapper extends StatefulWidget {
   const ConnectivityWrapper(
       {super.key, required this.child, this.onConnectionRestored});
 
+  // Expose a static ValueNotifier for connection status
+  static final ValueNotifier<bool> connectionStatus = ValueNotifier(true);
+
   @override
   State<ConnectivityWrapper> createState() => _ConnectivityWrapperState();
 }
@@ -45,6 +48,10 @@ class _ConnectivityWrapperState extends State<ConnectivityWrapper> {
   void _updateConnectionStatus(ConnectivityResult result,
       {bool isInitial = false}) {
     final isOffline = result == ConnectivityResult.none;
+
+    // Notify listeners for connection status
+    ConnectivityWrapper.connectionStatus.value =
+        result != ConnectivityResult.none;
 
     if (_isOffline != isOffline || isInitial) {
       setState(() {
